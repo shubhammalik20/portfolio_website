@@ -277,8 +277,8 @@
   .proj{display:grid;overflow:hidden;border-radius:1.5rem;border:1px solid var(--line);background:var(--panel);}
   @media(min-width:768px){.proj{grid-template-columns:repeat(12,1fr);}}
   .proj.rev .proj-img{order:2;}
-  .proj-img{position:relative;min-height:240px;overflow:hidden;}
-  @media(min-width:768px){.proj-img{grid-column:span 5;}}
+  .proj-img{position:relative;height:260px;overflow:hidden;align-self:start;}
+  @media(min-width:768px){.proj-img{grid-column:span 5;height:340px;}}
   .proj-img img{position:absolute;inset:0;height:100%;width:100%;object-fit:cover;opacity:.7;
     transition:transform .7s,opacity .7s;}
   .proj:hover .proj-img img{transform:scale(1.04);opacity:.9;}
@@ -288,9 +288,13 @@
   .proj-title{font-family:'Clash Display','Satoshi',sans-serif;margin-top:1rem;font-size:1.5rem;font-weight:600;
     letter-spacing:-.01em;}
   @media(min-width:768px){.proj-title{font-size:2.25rem;}}
-  .proj-desc{margin-top:1rem;max-width:36rem;line-height:1.7;color:var(--muted);}
+  .proj-text{min-height:230px;}
+  .proj-desc{margin-top:1rem;max-width:36rem;line-height:1.7;color:var(--muted);
+    display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;}
   .proj-foot{font-family:'JetBrains Mono',monospace;display:flex;align-items:center;justify-content:space-between;
     gap:1.5rem;border-top:1px solid var(--line-soft);padding-top:1.25rem;font-size:11px;letter-spacing:.18em;color:var(--muted);}
+  .proj-stack{min-height:4.4em;display:flex;align-items:center;}
+  @media(min-width:768px){.proj-stack{min-height:2.2em;}}
   .proj-foot .arrow{display:inline-block;flex-shrink:0;transition:transform .5s,color .5s;}
   .proj:hover .proj-foot .arrow{transform:translate(4px,-4px);color:var(--acc);}
 
@@ -491,7 +495,7 @@
           <h2 class="sh-title">Useful by<br /><em class="accent-serif" style="color:var(--acc2)">design.</em></h2>
         </div>
         <div class="sh-right" data-reveal style="transition-delay:.12s">
-          <p class="sh-intro">A snapshot of systems I've built to make reporting, distribution, and quality control feel lighter.</p>
+          <p class="sh-intro">A snapshot of where analysis meets automation — dashboards, pipelines, and reports built to make data easier to trust and easier to use.</p>
         </div>
       </div>
       <div class="projects-list" id="projectsList"></div>
@@ -618,15 +622,19 @@ const PROJECTS = [
     desc:"An automated reporting pipeline for an NBFC tracking loan performance and NPA status — with tiered distribution built in: leadership receives the full report across all data layers, 30+ branches get product-filtered views, and select partners receive only loan-level detail. Power Automate triggers on database updates, refreshing the dataset and emailing each group the correctly filtered report.",
     stack:"Power BI · SQL · Power Automate · Paginated Reports · DAX · Power Query",
     img:"assets/proj1.jpg" },
-  { no:"02 — AUTOMATION", title:"Automated Loan-Data Ingestion Pipeline",
+  { no:"02 — PORTFOLIO ANALYTICS", title:"Disbursal Trends Dashboard",
+    desc:"A Power BI dashboard tracking disbursal trends across 5 loan products and 20+ branches — month over month, quarter over quarter, year over year. Built on a scalable data model with Power Query transformations underneath, so incremental refresh keeps the numbers current without reprocessing the full dataset every time.",
+    stack:"Power BI · MySQL · DAX · Power Query · Data Modeling",
+    img:"assets/proj-disbursal.jpg" },
+  { no:"03 — AUTOMATION", title:"Automated Loan-Data Ingestion Pipeline",
     desc:"Loan data arrives by email; Power Automate files it into a OneDrive folder under the current business date, and Power BI dynamically fetches the right day's file on every refresh — quietly deleting a recurring manual step from the reporting cycle.",
     stack:"Power BI · Power Automate · OneDrive",
     img:"assets/proj2.jpg" },
-  { no:"03 — DATA QUALITY", title:"SQL-Based Automated Data Validation Framework",
+  { no:"04 — DATA QUALITY", title:"SQL-Based Automated Data Validation Framework",
     desc:"Dynamic SQL scripts verify key data-quality parameters — customized to each table's structure and business rules — across 15+ database tables. Manual checks are gone: validation cycles run faster and defects get caught before bad data reaches a report.",
     stack:"SQL · PostgreSQL · SQL Server",
     img:"assets/proj3.jpg" },
-  { no:"04 — RETAIL", title:"Customer Value Segmentation",
+  { no:"05 — RETAIL", title:"Customer Value Segmentation",
     desc:"Python-led segmentation of 1M+ transactions that surfaced high-value customer cohorts and seasonal demand patterns — turning a blank customer list into clear plays for targeted marketing and repeat-purchase campaigns.",
     stack:"Python · Pandas",
     img:"assets/proj4.jpg" },
@@ -810,13 +818,13 @@ PROJECTS.forEach((p, i) => {
     <article class="proj card-hover${i % 2 === 1 ? ' rev' : ''}">
       <div class="proj-img"><img src="${p.img}" alt="${p.title}" loading="lazy" onerror="this.style.display='none'" /></div>
       <div class="proj-body">
-        <div>
+        <div class="proj-text">
           <p class="proj-no">${p.no}</p>
           <h3 class="proj-title">${p.title}</h3>
           <p class="proj-desc">${p.desc}</p>
         </div>
         <div class="proj-foot">
-          <span>${p.stack.toUpperCase()}</span>
+          <span class="proj-stack">${p.stack.toUpperCase()}</span>
           <span class="arrow">↗</span>
         </div>
       </div>
