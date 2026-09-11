@@ -567,17 +567,17 @@
 
 <script>
 /* ---------- data ---------- */
-const MARQUEE_ITEMS = ["SQL","Python","Pandas","PySpark","Power BI","DAX","Azure Data Factory","Databricks","Snowflake","Data storytelling"];
+const MARQUEE_ITEMS = ["SQL","Python","Pandas","PySpark","Power BI","DAX","Azure Data Factory","Databricks","Data storytelling"];
 
 const SKILLS = [
   { id:"programming", tab:"Programming & Databases", desc:"Writing efficient queries and analysis code that survives real-world data.",
-    chips:["SQL","Python","Pandas","PySpark","MySQL","PostgreSQL","SQL Server"] },
+    chips:["SQL","Python","Pandas","NumPy", "PySpark","MySQL","PostgreSQL","SQL Server"] },
   { id:"cloud", tab:"Cloud & Data Engineering", desc:"Designing the pipelines, models, and checks that keep data trustworthy.",
-    chips:["Azure Data Factory","Databricks","Azure SQL","Snowflake","ETL","Data modeling","Data warehousing"] },
+    chips:["Azure Data Factory","Databricks","Azure SQL","BigQuery", "ETL","Power Automate","Data modeling","Data warehousing"] },
   { id:"bi", tab:"BI & Visualization", desc:"Building clear, self-service reporting systems teams and leadership actually use.",
-    chips:["Power BI","Power Query","DAX","Advanced Excel","Matplotlib","Seaborn"] },
+    chips:["Power BI","Power Query","DAX","Looker Studio", "Advanced Excel","Matplotlib","Seaborn"] },
   { id:"methodology", tab:"Analytical Expertise", desc:"Framing the right question, finding the why, and making the next move obvious.",
-    chips:["Statistical analysis","Hypothesis testing","A/B testing","Root cause analysis","Stakeholder management"] },
+    chips:["Statistical analysis","Hypothesis testing","Query Optimization", "Forecasting", "A/B testing","Root cause analysis","KPI Development","Requirement Gathering","Stakeholder management"] },
 ];
 
 const QUERIES = [
@@ -628,7 +628,7 @@ const PROJECTS = [
     img:"assets/proj-disbursal.jpg" },
   { no:"03 — AUTOMATION", title:"Automated Loan-Data Ingestion Pipeline",
     desc:"Loan data arrives by email; Power Automate files it into a OneDrive folder under the current business date, and Power BI dynamically fetches the right day's file on every refresh — quietly deleting a recurring manual step from the reporting cycle.",
-    stack:"Power BI · Power Automate · OneDrive",
+    stack:"Power BI · Power Automate · Power Query · OneDrive",
     img:"assets/proj2.jpg" },
   { no:"04 — DATA QUALITY", title:"SQL-Based Automated Data Validation Framework",
     desc:"Dynamic SQL scripts verify key data-quality parameters — customized to each table's structure and business rules — across 15+ database tables. Manual checks are gone: validation cycles run faster and defects get caught before bad data reaches a report.",
@@ -636,7 +636,7 @@ const PROJECTS = [
     img:"assets/proj3.jpg" },
   { no:"05 — RETAIL", title:"Customer Value Segmentation",
     desc:"Python-led segmentation of 1M+ transactions that surfaced high-value customer cohorts and seasonal demand patterns — turning a blank customer list into clear plays for targeted marketing and repeat-purchase campaigns.",
-    stack:"Python · Pandas",
+    stack:"Python · Pandas · NumPy · Matplotlib · Statistics",
     img:"assets/proj4.jpg" },
 ];
 
